@@ -73,34 +73,48 @@ def test_basic_types():
     assert 0 == msg.uint32_value
     assert 0 == msg.int64_value
     assert 0 == msg.uint64_value
+    assert msg == msg
 
     # assignment
     msg.bool_value = True
     assert msg.bool_value is True
+    assert msg == msg
     msg.byte_value = b'2'
     assert bytes([50]) == msg.byte_value
+    assert msg == msg
     msg.char_value = 42
     assert 42 == msg.char_value
+    assert msg == msg
     msg.float32_value = 1.125
     assert 1.125 == msg.float32_value
+    assert msg == msg
     msg.float64_value = 1.125
     assert 1.125 == msg.float64_value
+    assert msg == msg
     msg.int8_value = -50
     assert -50 == msg.int8_value
+    assert msg == msg
     msg.uint8_value = 200
     assert 200 == msg.uint8_value
+    assert msg == msg
     msg.int16_value = -1000
     assert -1000 == msg.int16_value
+    assert msg == msg
     msg.uint16_value = 2000
     assert 2000 == msg.uint16_value
+    assert msg == msg
     msg.int32_value = -30000
     assert -30000 == msg.int32_value
+    assert msg == msg
     msg.uint32_value = 60000
     assert 60000 == msg.uint32_value
+    assert msg == msg
     msg.int64_value = -40000000
     assert -40000000 == msg.int64_value
+    assert msg == msg
     msg.uint64_value = 50000000
     assert 50000000 == msg.uint64_value
+    assert msg == msg
 
     # out of range
     with pytest.raises(AssertionError):
@@ -132,20 +146,26 @@ def test_basic_types():
     # NaN
     setattr(msg, 'float32_value', math.nan)
     assert math.isnan(msg.float32_value)
+    assert msg == msg
     setattr(msg, 'float64_value', math.nan)
     assert math.isnan(msg.float64_value)
+    assert msg == msg
 
     # -Inf
     setattr(msg, 'float32_value', -math.inf)
     assert math.isinf(msg.float32_value)
+    assert msg == msg
     setattr(msg, 'float64_value', -math.inf)
     assert math.isinf(msg.float64_value)
+    assert msg == msg
 
     # +Inf
     setattr(msg, 'float32_value', math.inf)
     assert math.isinf(msg.float32_value)
+    assert msg == msg
     setattr(msg, 'float64_value', math.inf)
     assert math.isinf(msg.float64_value)
+    assert msg == msg
 
 
 def test_strings():
